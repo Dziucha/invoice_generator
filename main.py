@@ -23,10 +23,24 @@ for filepath in filepaths:
 
     excel_data = pd.read_excel(filepath, sheet_name="Sheet 1")
 
+    for index, row in excel_data.iterrows():
+        pdf.set_font(family="Times", size=12)
+        pdf.set_text_color(80, 80, 80)
+        pdf.cell(w=30, h=8, txt=str(row["product_id"]),
+                 align="L", border=1)
+        pdf.cell(w=70, h=8, txt=row["product_name"],
+                 align="L", border=1)
+        pdf.cell(w=30, h=8, txt=str(row["amount_purchased"]),
+                 align="L", border=1)
+        pdf.cell(w=30, h=8, txt=str(row["price_per_unit"]),
+                 align="L", border=1)
+        pdf.cell(w=30, h=8, txt=str(row["total_price"]),
+                 align="L", border=1, ln=1)
 
     total_price = excel_data["total_price"].sum()
 
     pdf.set_font(family="Times", size=10, style="B")
+    pdf.set_text_color(0, 0, 0)
     pdf.cell(w=0, h=8, txt=f"The total due amount is: {total_price} Euros.",
              align="L", border=1, ln=1)
     pdf.cell(w=0, h=8, txt="PythonHow", align="L", border=1, ln=1)
