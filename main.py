@@ -25,8 +25,7 @@ for filepath in filepaths:
              align="L", border=1, ln=1)
 
     total_price = 0
-    for index, row in excel_data.iterrows():
-        total_price = total_price + float(row["total_price"])
+    total_price = excel_data["total_price"].sum()
 
     pdf.set_font(family="Times", size=10, style="B")
     pdf.cell(w=0, h=8, txt=f"The total due amount is: {total_price} Euros.",
