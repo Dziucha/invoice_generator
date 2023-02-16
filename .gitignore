@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+excel_files
+pdf_invoices
