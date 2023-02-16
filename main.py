@@ -26,7 +26,7 @@ for filepath in filepaths:
     pdf.set_font(family="Times", size=10, style="B")
     pdf.set_text_color(80, 80, 80)
 
-    headers = list(excel_data.columns)
+    headers = excel_data.columns
     headers = [header.replace("_", " ").title() for header in headers]
 
     pdf.cell(w=30, h=8, txt=headers[0], align="L", border=1)
@@ -62,6 +62,7 @@ for filepath in filepaths:
     pdf.set_text_color(0, 0, 0)
     pdf.cell(w=0, h=8, txt=f"The total due amount is: {total_price} Euros.",
              align="L", ln=1)
-    pdf.cell(w=0, h=8, txt="PythonHow", align="L", ln=1)
+    pdf.cell(w=20, h=8, txt="PythonHow", align="L")
+    pdf.image("logo.png",  w=10)
 
     pdf.output(f"pdf_invoices/{file_name}.pdf")
